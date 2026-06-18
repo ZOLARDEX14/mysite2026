@@ -16,13 +16,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.debug import default_urlconf
+from django.http import HttpResponse
+from django.shortcuts import render
 from . import views
 
+def info(request):
+    ip = request.META.get('REMOTE_ADDR')
+    if ip in ('127.0.0.1', '::1'):
+        ip = '10.255.65.80'
+    res_text = f"<h1>Your IP Address is: {ip}</h1><br>"
+    for k, v in request.headers.items():
+        res_text += f"<p>{k} : {v}</p>"
+    return HttpResponse(res_text)
+
+def home(request):
+    return render(request, 'home.html')
+
 urlpatterns = [
+    path('', home),
+    path('info/', info),
     path('admin/', admin.site.urls),
-    path('', default_urlconf),
-    path('info', views.info_view, name='info'),
+    # Previous task endpoints
+    path('info', info),
     path('hello', views.hello_view, name='hello'),
     path('quiz/', include('quiz.urls')),
 ]
