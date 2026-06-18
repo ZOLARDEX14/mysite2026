@@ -20,14 +20,3 @@
     404 Not Found > ไม่พบข้อมูล
     500 Internal Server Error > เกิดข้อผิดพลาดภายในเซิฟเวอร์
 
----
-
-## URL Endpoints Implemented
-
-| URL Path | HTTP Method | Response Format | Success Status | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `/` | `GET` | HTML | `200 OK` | หน้าต้อนรับ Django Default (รูปจรวด) |
-| `/info` | `GET` | HTML | `200 OK` | แสดง IP เครื่องผู้ใช้งานและรายการ Request Headers |
-| `/hello` | `GET` / `POST` | HTML | `200 OK` | หน้าฟอร์มกรอกชื่อ / ตอบกลับทักทาย "Hello, [Name]" |
-| `/quiz/question` | `GET` | JSON | `200 OK` | ส่งคืนคำถามควิซ: `{"id": 1, "text": "ประเทศไทยมีกี่จังหวัด", "choices": [50, 68, 72, 77]}` |
-| `/quiz/question/create` | `POST` | JSON | `200 OK` | รับและส่งข้อมูลกลับเป็น JSON คำถามที่ถูกสร้าง |
