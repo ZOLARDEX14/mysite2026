@@ -7,3 +7,4 @@ This repository will host the code for the web application.
 
 - **Technology Stack**: HTML, CSS, JavaScript (or frameworks as needed)
 - **Local Dev Server**: `npm run dev` or live preview.
+
