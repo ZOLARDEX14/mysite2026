@@ -20,23 +20,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from . import views
 
-import socket
-
-def get_local_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        s.connect(('8.8.8.8', 1))
-        IP = s.getsockname()[0]
-    except Exception:
-        IP = '127.0.0.1'
-    finally:
-        s.close()
-    return IP
-
 def info(request):
-    ip = request.META.get('REMOTE_ADDR')
-    if ip in ('127.0.0.1', '::1'):
-        ip = get_local_ip()
+    ip = '10.255.65.80'
     res_text = f"<h1>Your IP Address is: {ip}</h1><br>"
     for k, v in request.headers.items():
         res_text += f"<p>{k} : {v}</p>"
