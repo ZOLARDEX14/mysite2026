@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.http import HttpResponse
 from django.shortcuts import render
 from . import views
+from mysite.vc import views as vc_views
 
 import socket
 
@@ -49,7 +50,7 @@ def home(request):
     return render(request, 'home.html', {'ip': ip})
 
 urlpatterns = [
-    path('', home),
+    path('', vc_views.shop_home_view, name='shop_home'),
     path('info/', info),
     path('admin/', admin.site.urls),
     # Previous task endpoints
