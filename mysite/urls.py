@@ -55,5 +55,5 @@ urlpatterns = [
     # Previous task endpoints
     path('info', info),
     path('hello', views.hello_view, name='hello'),
-    path('quiz/', include('vc.urls')),
+    path('quiz/', include('mysite.vc.urls')),
 ]
