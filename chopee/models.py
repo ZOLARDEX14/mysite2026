@@ -18,6 +18,7 @@ class Product(models.Model):
     location = models.CharField(max_length=100, default='กรุงเทพมหานคร')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     stock = models.IntegerField(default=10)
+    year = models.IntegerField(default=2026, blank=True, null=True)
 
     def __str__(self):
         return self.name
