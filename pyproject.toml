@@ -1,7 +1,14 @@
 [project]
-name = "webdev-2026"
+name = "mysite2026"
 version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "django>=6.0.6",
+]
+
+[dependency-groups]
+dev = [
+    "ipython>=9.15.0",
 ]

@@ -1,5 +1,5 @@
 """
-ASGI config for mysite2026 project.
+ASGI config for mysite project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

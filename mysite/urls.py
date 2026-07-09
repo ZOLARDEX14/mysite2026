@@ -1,5 +1,5 @@
 """
-URL configuration for mysite2026 project.
+URL configuration for mysite project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -16,45 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
-from django.shortcuts import render
+# pyrefly: ignore [missing-import]
+# from .views import *
 from . import views
-from mysite.vc import views as vc_views
-
-import socket
-
-def get_local_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        s.connect(('8.8.8.8', 1))
-        IP = s.getsockname()[0]
-    except Exception:
-        IP = '127.0.0.1'
-    finally:
-        s.close()
-    return IP
-
-def info(request):
-    ip = request.META.get('REMOTE_ADDR')
-    if ip in ('127.0.0.1', '::1'):
-        ip = get_local_ip()
-    res_text = f"<h1>Your IP Address is: {ip}</h1><br>"
-    for k, v in request.headers.items():
-        res_text += f"<p>{k} : {v}</p>"
-    return HttpResponse(res_text)
-
-def home(request):
-    ip = request.META.get('REMOTE_ADDR')
-    if ip in ('127.0.0.1', '::1'):
-        ip = get_local_ip()
-    return render(request, 'home.html', {'ip': ip})
 
 urlpatterns = [
-    path('', vc_views.shop_home_view, name='shop_home'),
-    path('info/', info),
+    path('', views.home),
+    path('info/', views.info),
+    path('shopping/', views.shopping),
+    path('lucksoot/', views.lucksoot_pdf),
+    path('chopee/', include('chopee.urls')),
     path('admin/', admin.site.urls),
-    # Previous task endpoints
-    path('info', info),
-    path('hello', views.hello_view, name='hello'),
-    path('quiz/', include('mysite.vc.urls')),
 ]

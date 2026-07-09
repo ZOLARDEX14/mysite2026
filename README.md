@@ -1,22 +1,19 @@
-# mysite
-    242-19
 
-## run server   
+
+   D:
+   mkdir Github
+   cd Github
+   mkdir wichit2s
+   cd wichit2s
+   gh repo clone wichit2s/mysite2026
+   cd mysite2026
+   uv init
+   uv add django
+   uv run django-admin startproject mysite .
+   uv run manage.py runserver 0.0.0.0:80
+
+## คำสั่งสร้างแอปใหม่ชื่อ chopee
+
+    uv run manage.py startapp chopee
+    uv run manage.py migrate
     uv run manage.py runserver 0.0.0.0:80
-  
-## http methods 
-    GET > http://[IP_ADDRESS]/info
-    POST
-    PUT
-    DELETE
-    PATCH
-
-## http status code
-    200 OK > เรียบร้อย
-    201 Created > เพิ่มข้อมูลสำเร็จ
-    400 Bad Request > ส่งข้อมูลผิดพลาด
-    401 Unauthorized > ไม่ได้รับอนุญาต
-    403 Forbidden > ถูกห้าม
-    404 Not Found > ไม่พบข้อมูล
-    500 Internal Server Error > เกิดข้อผิดพลาดภายในเซิฟเวอร์
-
