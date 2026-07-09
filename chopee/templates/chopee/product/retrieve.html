@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chopee - ค้นหาสินค้า</title>
+    <title>Chopee - Product Retrieve</title>
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ff4d2d;
-            --primary-hover: #f13c1c;
-            --bg-color: #0d0f14;
-            --panel-bg: rgba(25, 28, 36, 0.65);
-            --border-color: rgba(255, 77, 45, 0.15);
-            --text-color: #e4e6eb;
-            --text-muted: #b0b3b8;
+            --primary-hover: #e5391a;
+            --bg-color: #f6f9fc;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --border-color: #e1e8ed;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -24,25 +25,63 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
         .container {
             width: 100%;
-            max-width: 600px;
-            background: var(--panel-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
         }
-        h2 {
-            color: var(--primary);
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
+        .header-title {
+            font-size: 28px;
             font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        .nav-bar {
+            background: #f1f5f9;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+        .nav-label {
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        .content-section {
+            flex: 1;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            color: var(--text-color);
         }
         .search-box {
             display: flex;
@@ -53,8 +92,8 @@
             flex: 1;
             padding: 10px 15px;
             border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            background: #fcfcfc;
             color: var(--text-color);
             outline: none;
         }
@@ -70,56 +109,89 @@
         }
         .btn-search:hover { background: var(--primary-hover); }
         .product-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             margin-top: 15px;
         }
         .product-item {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 14px 20px;
+            background: #fafbfc;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 15px;
         }
-        .product-info h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-        .product-info p { font-size: 13px; color: var(--text-muted); }
-        .product-price { color: var(--primary); font-weight: 700; font-size: 16px; }
-        .btn-back {
-            display: block;
-            text-align: center;
+        .product-details {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .category-badge {
+            background: rgba(255, 77, 45, 0.1);
+            color: var(--primary);
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+        .product-name {
+            font-weight: 600;
+        }
+        .product-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
             color: var(--text-muted);
-            text-decoration: none;
-            margin-top: 20px;
-            font-size: 14px;
+            text-align: center;
         }
-        .btn-back:hover { color: var(--text-color); }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>ค้นหาสินค้า (Retrieve)</h2>
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="พิมพ์ชื่อสินค้าเพื่อค้นหา...">
-            <button class="btn-search">ค้นหา</button>
-        </div>
-        <div class="product-list">
-            <div class="product-item">
-                <div class="product-info">
-                    <h3>Wireless Gaming Headphones</h3>
-                    <p>หูฟังเกมนิ่งไร้สายระบบเสียง 7.1</p>
-                </div>
-                <span class="product-price">฿1,290.00</span>
+        <!-- HOME Header -->
+        <h1 class="header-title">HOME</h1>
+        
+        <!-- Product Nav Bar -->
+        <nav class="nav-bar">
+            <span class="nav-label">Product:</span>
+            <a href="/" class="nav-link">List</a>
+            <a href="/product/create" class="nav-link">Create</a>
+            <a href="/product/retrieve" class="nav-link active">Retrieve</a>
+            <a href="/product/update" class="nav-link">Update</a>
+            <a href="/product/delete" class="nav-link">Delete</a>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content-section">
+            <h2 class="section-title">Product - Retrieve</h2>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="พิมพ์ชื่อสินค้าเพื่อค้นหา...">
+                <button class="btn-search">ค้นหา</button>
             </div>
-            <div class="product-item">
-                <div class="product-info">
-                    <h3>Mechanical Keyboard</h3>
-                    <p>คีย์บอร์ดกลไกสวิตช์คุณภาพสูง</p>
-                </div>
-                <span class="product-price">฿1,890.00</span>
-            </div>
+            <ul class="product-list">
+                <li class="product-item">
+                    <div class="product-details">
+                        <span class="category-badge">Electronics</span>
+                        <span class="product-name">Custom RGB Mechanical Keyboard</span>
+                    </div>
+                    <span class="product-price">1290.00</span>
+                </li>
+            </ul>
         </div>
-        <a href="../../" class="btn-back">⬅️ ย้อนกลับหน้าแรก</a>
+
+        <!-- Footer -->
+        <footer class="footer">
+            footer
+        </footer>
     </div>
 </body>
 </html>

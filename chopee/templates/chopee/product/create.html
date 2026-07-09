@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chopee - เพิ่มสินค้า</title>
+    <title>Chopee - Product Create</title>
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ff4d2d;
-            --primary-hover: #f13c1c;
-            --bg-color: #0d0f14;
-            --panel-bg: rgba(25, 28, 36, 0.65);
-            --border-color: rgba(255, 77, 45, 0.15);
-            --text-color: #e4e6eb;
-            --text-muted: #b0b3b8;
+            --primary-hover: #e5391a;
+            --bg-color: #f6f9fc;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --border-color: #e1e8ed;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -24,25 +25,63 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
         .container {
             width: 100%;
-            max-width: 500px;
-            background: var(--panel-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
         }
-        h2 {
-            color: var(--primary);
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
+        .header-title {
+            font-size: 28px;
             font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        .nav-bar {
+            background: #f1f5f9;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+        .nav-label {
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        .content-section {
+            flex: 1;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            color: var(--text-color);
         }
         .form-group {
             margin-bottom: 15px;
@@ -51,14 +90,15 @@
             display: block;
             margin-bottom: 6px;
             font-size: 14px;
+            font-weight: 600;
             color: var(--text-muted);
         }
         input[type="text"], input[type="number"], select, textarea {
             width: 100%;
             padding: 10px 12px;
             border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            background: #fcfcfc;
             color: var(--text-color);
             outline: none;
             font-size: 14px;
@@ -84,42 +124,59 @@
         .btn-submit:hover {
             background: var(--primary-hover);
         }
-        .btn-back {
-            display: block;
-            text-align: center;
+        .footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
             color: var(--text-muted);
-            text-decoration: none;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-        .btn-back:hover {
-            color: var(--text-color);
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>เพิ่มสินค้าใหม่ (Create)</h2>
-        <form>
-            <div class="form-group">
-                <label for="productName">ชื่อสินค้า</label>
-                <input type="text" id="productName" placeholder="ระบุชื่อสินค้า...">
-            </div>
-            <div class="form-group">
-                <label for="productPrice">ราคาสินค้า (บาท)</label>
-                <input type="number" id="productPrice" placeholder="0.00">
-            </div>
-            <div class="form-group">
-                <label for="productStock">จำนวนสต็อก</label>
-                <input type="number" id="productStock" placeholder="0">
-            </div>
-            <div class="form-group">
-                <label for="productDesc">รายละเอียดสินค้า</label>
-                <textarea id="productDesc" rows="3" placeholder="ระบุข้อมูลสินค้า..."></textarea>
-            </div>
-            <button type="button" class="btn-submit" onclick="alert('บันทึกข้อมูลเรียบร้อย (ระบบจำลอง)')">บันทึกข้อมูล</button>
-        </form>
-        <a href="../../" class="btn-back">⬅️ ย้อนกลับหน้าแรก</a>
+        <!-- HOME Header -->
+        <h1 class="header-title">HOME</h1>
+        
+        <!-- Product Nav Bar -->
+        <nav class="nav-bar">
+            <span class="nav-label">Product:</span>
+            <a href="/" class="nav-link">List</a>
+            <a href="/product/create" class="nav-link active">Create</a>
+            <a href="/product/retrieve" class="nav-link">Retrieve</a>
+            <a href="/product/update" class="nav-link">Update</a>
+            <a href="/product/delete" class="nav-link">Delete</a>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content-section">
+            <h2 class="section-title">Product - Create</h2>
+            <form>
+                <div class="form-group">
+                    <label for="productName">ชื่อสินค้า</label>
+                    <input type="text" id="productName" placeholder="ระบุชื่อสินค้า...">
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">ราคาสินค้า (บาท)</label>
+                    <input type="number" id="productPrice" placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label for="productStock">จำนวนสต็อก</label>
+                    <input type="number" id="productStock" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label for="productDesc">รายละเอียดสินค้า</label>
+                    <textarea id="productDesc" rows="3" placeholder="ระบุข้อมูลสินค้า..."></textarea>
+                </div>
+                <button type="button" class="btn-submit" onclick="alert('บันทึกข้อมูลเรียบร้อย (ระบบจำลอง)')">บันทึกข้อมูล</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            footer
+        </footer>
     </div>
 </body>
 </html>

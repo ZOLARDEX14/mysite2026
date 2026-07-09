@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chopee - หน้าหลัก</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Outfit:wght@400;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Chopee - Product List</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ff4d2d;
-            --primary-hover: #f13c1c;
-            --bg-color: #0d0f14;
-            --panel-bg: rgba(25, 28, 36, 0.65);
-            --border-color: rgba(255, 77, 45, 0.15);
-            --text-color: #e4e6eb;
-            --text-muted: #b0b3b8;
+            --primary-hover: #e5391a;
+            --bg-color: #f6f9fc;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --border-color: #e1e8ed;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -24,83 +25,150 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
         .container {
             width: 100%;
-            max-width: 600px;
-            background: var(--panel-bg);
-            backdrop-filter: blur(10px);
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            text-align: center;
-        }
-        h1 {
-            font-family: 'Orbitron', 'Sarabun', sans-serif;
-            font-weight: 900;
-            color: var(--primary);
-            font-size: 38px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        .menu-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 10px;
-            padding: 20px;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: all 0.25s ease;
             display: flex;
             flex-direction: column;
+            min-height: 500px;
+        }
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        .nav-bar {
+            background: #f1f5f9;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            font-size: 14px;
         }
-        .menu-card:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 77, 45, 0.08);
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(255, 77, 45, 0.1);
+        .nav-label {
+            font-weight: 700;
+            color: var(--text-muted);
         }
-        .menu-icon { font-size: 32px; }
-        .menu-title { font-weight: 700; font-size: 16px; }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        .content-section {
+            flex: 1;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            color: var(--text-color);
+        }
+        .product-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .product-item {
+            padding: 14px 20px;
+            background: #fafbfc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+        }
+        .product-details {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .category-badge {
+            background: rgba(255, 77, 45, 0.1);
+            color: var(--primary);
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+        .product-name {
+            font-weight: 600;
+        }
+        .product-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>CHOPEE</h1>
-        <p class="subtitle">ระบบจัดการฐานข้อมูลสินค้าของร้าน Chopee</p>
-        <div class="menu-grid">
-            <a href="product/create" class="menu-card">
-                <span class="menu-icon">➕</span>
-                <span class="menu-title">เพิ่มสินค้า (Create)</span>
-            </a>
-            <a href="product/retrieve" class="menu-card">
-                <span class="menu-icon">🔍</span>
-                <span class="menu-title">ค้นหาสินค้า (Retrieve)</span>
-            </a>
-            <a href="product/update" class="menu-card">
-                <span class="menu-icon">✏️</span>
-                <span class="menu-title">แก้ไขสินค้า (Update)</span>
-            </a>
-            <a href="product/delete" class="menu-card">
-                <span class="menu-icon">❌</span>
-                <span class="menu-title">ลบสินค้า (Delete)</span>
-            </a>
+        <!-- HOME Header -->
+        <h1 class="header-title">HOME</h1>
+        
+        <!-- Product Nav Bar -->
+        <nav class="nav-bar">
+            <span class="nav-label">Product:</span>
+            <a href="/" class="nav-link active">List</a>
+            <a href="/product/create" class="nav-link">Create</a>
+            <a href="/product/retrieve" class="nav-link">Retrieve</a>
+            <a href="/product/update" class="nav-link">Update</a>
+            <a href="/product/delete" class="nav-link">Delete</a>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content-section">
+            <h2 class="section-title">Product - List</h2>
+            <ul class="product-list">
+                {% for prod in products %}
+                <li class="product-item">
+                    <div class="product-details">
+                        <span class="category-badge">{{ prod.category.name }}</span>
+                        <span class="product-name">{{ prod.name }}</span>
+                    </div>
+                    <span class="product-price">{{ prod.price }}</span>
+                </li>
+                {% empty %}
+                <li class="product-item" style="color: var(--text-muted); justify-content: center;">
+                    ไม่มีสินค้าในฐานข้อมูล
+                </li>
+                {% endfor %}
+            </ul>
         </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            footer
+        </footer>
     </div>
 </body>
 </html>
