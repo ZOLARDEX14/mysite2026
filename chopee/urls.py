@@ -1,8 +1,10 @@
 from django.urls import path
-from . import views
-
-app_name = 'chopee'
+from .views import *
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', home),
+    path('product/create', product_create),
+    path('product/retrieve', product_retrieve),
+    path('product/update', product_update),
+    path('product/delete', product_delete),
 ]
