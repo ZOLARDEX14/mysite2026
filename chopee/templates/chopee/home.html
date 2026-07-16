@@ -2,6 +2,6 @@ HOME<br>
 Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
 Product - List<br>
 {% for prod in products %}
-{{ prod.category.name }}&nbsp;&nbsp;{{ prod.name }}&nbsp;&nbsp;{{ prod.price }}<br>
+{{ prod.brand }}&nbsp;&nbsp;{{ prod.name }}&nbsp;&nbsp;{{ prod.price }}&nbsp;&nbsp;{{ prod.year }}<br>
 {% endfor %}
 footer

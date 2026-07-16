@@ -1,10 +1,20 @@
 HOME<br>
 Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
 Product - Update<br>
-<form>
-    แก้ไขสินค้า (ID): <input type="number" name="id"><br>
-    ชื่อใหม่: <input type="text" name="name"><br>
-    ราคาใหม่: <input type="number" name="price"><br>
-    <input type="submit" value="อัปเดต">
+{% if product %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ product.id }}">
+    Brand: <input type="text" name="brand" value="{{ product.brand }}"><br><br>
+    Name: <input type="text" name="name" value="{{ product.name }}"><br><br>
+    Price: <input type="number" name="price" value="{{ product.price }}"><br><br>
+    Year: <input type="number" name="year" value="{{ product.year }}"><br><br>
+    <input type="submit" value="Submit">
 </form>
+{% else %}
+<form method="GET">
+    แก้ไขสินค้า (ID): <input type="number" name="id">
+    <input type="submit" value="ดึงข้อมูลมาแก้ไข">
+</form>
+{% endif %}
 footer
