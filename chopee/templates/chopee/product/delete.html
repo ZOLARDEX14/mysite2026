@@ -1,8 +1,28 @@
-HOME<br>
-Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
-Product - Delete<br>
-<form>
-    ลบสินค้า (ID): <input type="number" name="id"><br>
-    <input type="submit" value="ลบสินค้า">
-</form>
-footer
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Chopee - Product Delete</title>
+</head>
+<body>
+
+    <!-- 1. ส่วนหัวข้อของหน้าเว็บ -->
+    HOME<br>
+
+    <!-- 2. เมนูนำทาง (Navigation) -->
+    Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
+
+    <!-- 3. หัวข้อส่วนเนื้อหาหลัก -->
+    Product - Delete<br>
+
+    <!-- 4. ฟอร์มกรอก ID เพื่อสั่งลบสินค้า -->
+    <form method="GET">
+        ลบสินค้า (ID): <input type="number" name="id"><br><br>
+        <input type="submit" value="ลบสินค้า">
+    </form>
+
+    <!-- 5. ส่วนท้ายหน้าเว็บ -->
+    footer
+
+</body>
+</html>

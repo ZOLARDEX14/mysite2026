@@ -1,12 +1,32 @@
-HOME<br>
-Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
-Product - Create Section<br>
-<form method="POST">
-    {% csrf_token %}
-    Brand: <input type="text" name="brand"><br><br>
-    Name: <input type="text" name="name"><br><br>
-    Price: <input type="number" name="price"><br><br>
-    Year: <input type="number" name="year"><br><br>
-    <input type="submit" value="Submit">
-</form>
-footer
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Chopee - Product Create</title>
+</head>
+<body>
+
+    <!-- 1. ส่วนหัวข้อของหน้าเว็บ -->
+    HOME<br>
+
+    <!-- 2. เมนูนำทาง (Navigation) -->
+    Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
+
+    <!-- 3. หัวข้อส่วนเนื้อหาหลัก -->
+    Product - Create Section<br>
+
+    <!-- 4. ฟอร์มสำหรับกรอกข้อมูลเพื่อส่งแบบ POST ไปเก็บในฐานข้อมูล -->
+    <form method="POST">
+        {% csrf_token %} <!-- ป้องกันความปลอดภัยของ Django (CSRF Token) -->
+        Brand: <input type="text" name="brand"><br><br>
+        Name: <input type="text" name="name"><br><br>
+        Price: <input type="number" name="price"><br><br>
+        Year: <input type="number" name="year"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- 5. ส่วนท้ายหน้าเว็บ -->
+    footer
+
+</body>
+</html>
