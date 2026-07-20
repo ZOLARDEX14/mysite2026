@@ -1,42 +1,20 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <title>Chopee - Product Update</title>
-</head>
-<body>
-
-    <!-- 1. ส่วนหัวข้อของหน้าเว็บ -->
-    HOME<br>
-
-    <!-- 2. เมนูนำทาง (Navigation) -->
-    Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
-
-    <!-- 3. หัวข้อส่วนเนื้อหาหลัก -->
-    Product - Update<br>
-
-    <!-- 4. แยกการแสดงผลด้วยเงื่อนไขของตัวแปร product -->
-    {% if product %}
-        <!-- ถ้าเจอกล่องสินค้า ให้แสดงแบบฟอร์มเพื่อแก้ไขค่าของสินค้าตัวนั้น -->
-        <form method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="id" value="{{ product.id }}">
-            Brand: <input type="text" name="brand" value="{{ product.brand }}"><br><br>
-            Name: <input type="text" name="name" value="{{ product.name }}"><br><br>
-            Price: <input type="number" name="price" value="{{ product.price }}"><br><br>
-            Year: <input type="number" name="year" value="{{ product.year }}"><br><br>
-            <input type="submit" value="Submit">
-        </form>
-    {% else %}
-        <!-- ถ้ายังไม่มีการดึงสินค้า ให้กรอก ID เพื่อระบุตัวตนสินค้าที่ต้องการแก้ไขก่อน -->
-        <form method="GET">
-            แก้ไขสินค้า (ID): <input type="number" name="id">
-            <input type="submit" value="ดึงข้อมูลมาแก้ไข">
-        </form>
-    {% endif %}
-
-    <!-- 5. ส่วนท้ายหน้าเว็บ -->
-    footer
-
-</body>
-</html>
+HOME<br>
+Product:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/create">Create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/retrieve">Retrieve</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/update">Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product/delete">Delete</a><br>
+Product - Update<br>
+{% if product %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ product.id }}">
+    Brand: <input type="text" name="brand" value="{{ product.brand }}"><br>
+    Name: <input type="text" name="name" value="{{ product.name }}"><br>
+    Price: <input type="number" name="price" value="{{ product.price }}"><br>
+    Year: <input type="number" name="year" value="{{ product.year }}"><br>
+    <input type="submit" value="Submit">
+</form>
+{% else %}
+<form method="GET">
+    แก้ไขสินค้า (ID): <input type="number" name="id">
+    <input type="submit" value="ดึงข้อมูล">
+</form>
+{% endif %}
+footer
